@@ -9,7 +9,7 @@ class Board
 
   def generate_squares
     files = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
-    colors = ["\u25a1", "\u25a0"]
+    colors = ["\u2b1c", "\u2b1b"]
     while !files.empty?
       rank = 1
       file = files.shift
@@ -24,6 +24,16 @@ class Board
   end
 
   def print_board
+    row = 8
+    while row > 0
+      section = ['A'+row.to_s,'B'+row.to_s,'C'+row.to_s,'D'+row.to_s,'E'+row.to_s,'F'+row.to_s,'G'+row.to_s,'H'+row.to_s,]
+      while !section.empty?
+        curr = section.shift
+        print @squares[curr].color
+      end
+      puts
+      row -= 1
+    end
   end
 end
 
