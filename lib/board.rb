@@ -7,6 +7,15 @@ class Board
     @squares = {}
   end
 
+  def has_occupant?(square)
+    return false if @squares[square].occupant.nil?
+    return true
+  end
+
+  def off_board?(square)
+    @squares[square].nil?
+  end
+
   def generate_squares
     files = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
     colors = ["\u2b1c", "\u2b1b"]

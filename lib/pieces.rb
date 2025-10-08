@@ -2,11 +2,29 @@
 class Pieces
   attr_accessor :id, :in_play, :moves, :character
   
-  def initialize(id, character)
+  def initialize(character)
     @character = character
-    @id = id
-    @in_play = true
+    @location = nil
     @moves = []
+  end
+
+
+  def valid_move?(square)
+    if @moves.include?(square)
+      return true
+    else
+      puts 'Invalid move!'
+      return false
+    end
+  end
+
+  def move_piece(square)
+    square.occupant = self
+    @location = square
+  end
+
+  def update_moves
+
   end
 end
 

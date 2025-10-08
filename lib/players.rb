@@ -6,17 +6,9 @@ class Player
   def initialize(id)
     @id = id
     @pieces = {}
-    @out_of_play = []
+    @enemy_pieces = []
   end
 
-  def move_piece(piece, square)
-    if piece.moves.include?(square)
-      square.occupant = piece
-    else
-      puts "Invalid Choice!"
-      move_piece(piece, square)
-    end
-  end
 
   def generate_pieces
     create_pawns
@@ -32,7 +24,7 @@ class Player
     n = 1
     8.times do
       id = "P" + n.to_s
-      @pieces[id] = Pawn.new(id, char)
+      @pieces[id] = Pawn.new(char)
       n += 1
     end
   end
@@ -40,22 +32,22 @@ class Player
   def create_knights
     char = "\u265e " if @id == 'White'
     char = "\u2658 " if @id == 'Black'
-    @pieces['L1'] = Knight.new('L1', char)
-    @pieces['L2'] = Knight.new('L2', char)
+    @pieces['L1'] = Knight.new(char)
+    @pieces['L2'] = Knight.new(char)
   end
   
   def create_rooks
     char = "\u265c " if @id == 'White'
     char = "\u2656 " if @id == 'Black'
-    @pieces['R1'] = Rook.new('R1', char)
-    @pieces['R2'] = Rook.new('R2', char)
+    @pieces['R1'] = Rook.new(char)
+    @pieces['R2'] = Rook.new(char)
   end
 
   def create_bishops
     char = "\u265d " if @id == 'White'
     char = "\u2657 " if @id == 'Black'
-    @pieces['B1'] = Bishop.new('B1', char)
-    @pieces['B2'] = Bishop.new('B2', char)
+    @pieces['B1'] = Bishop.new(char)
+    @pieces['B2'] = Bishop.new(char)
   end
 
   def create_royals
@@ -66,8 +58,8 @@ class Player
       char_king = "\u2654 "
       char_queen = "\u2655 "
     end
-    @pieces['K'] = King.new('King', char_king)
-    @pieces['Q'] = Queen.new('Queen', char_queen)
+    @pieces['K'] = King.new(char_king)
+    @pieces['Q'] = Queen.new(char_queen)
   end
 
 end
