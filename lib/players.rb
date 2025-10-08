@@ -19,14 +19,10 @@ class Player
     return collection
   end
 
-  def create_pawns
-    pawns = {}
-    num = 1
-    8.times do
-      id = "P" + num.to_s
-      pawns[num] = Pawn.new(id)
-      num += 1
-    end
+  def create_pawns(pawns = {}, num = 1)
+    return pawns if num > 8
+    pawns[num] = Pawn.new('P' + num.to_s)
+    create_pawns(pawns, num + 1)
     return pawns
   end
 
