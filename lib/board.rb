@@ -29,7 +29,11 @@ class Board
       section = ['A'+row.to_s,'B'+row.to_s,'C'+row.to_s,'D'+row.to_s,'E'+row.to_s,'F'+row.to_s,'G'+row.to_s,'H'+row.to_s,]
       while !section.empty?
         curr = section.shift
-        print @squares[curr].color
+        if @squares[curr].occupant.nil?
+          print @squares[curr].color
+        else
+          print @squares[curr].occupant.character
+        end
       end
       puts
       row -= 1

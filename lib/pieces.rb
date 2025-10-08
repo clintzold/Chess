@@ -1,11 +1,12 @@
 #lib/pieces.rb
 class Pieces
-  attr_accessor :id, :in_play, :moves
+  attr_accessor :id, :in_play, :moves, :character
   
-  def initialize(id)
+  def initialize(id, character)
+    @character = character
     @id = id
     @in_play = true
-    @moves = {}
+    @moves = []
   end
 end
 
