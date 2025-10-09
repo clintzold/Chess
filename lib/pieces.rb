@@ -81,7 +81,7 @@ class Knight < Pieces
       next if board.off_board?(item)
       if !board.has_occupant?(item)
         final_options << item
-      elsif !board.has_occupant?(item) && enemy?(board.square_coordinates[item])
+      elsif board.has_occupant?(item) && enemy?(board.square_coordinates[item])
         final_options << item
       else
         next
