@@ -113,15 +113,19 @@ class Board
   def generate_squares
     files = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
     colors = ["\u2b1c", "\u2b1b"]
+    x = 0
     while !files.empty?
       rank = 1
+      y = 0
       file = files.shift
       8.times do
         id = file + rank.to_s
-        @squares[id] = Square.new(id, colors[0])
+        @squares[id] = Square.new(id, colors[0], [x, y])
+        y += 1
         rank += 1
         colors.rotate!
       end
+      x += 1
       colors.rotate!
     end
   end
@@ -145,10 +149,11 @@ class Board
 end
 
 class Square
-  attr_accessor :id, :occupant, :color
+  attr_accessor :id, :occupant, :color, :coordinate
 
-  def initialize(id, color)
+  def initialize(id, color, coordinate)
     @id = id
+    @coordinate = coordinate
     @color = color
     @occupant = nil
   end

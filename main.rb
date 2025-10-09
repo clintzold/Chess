@@ -3,7 +3,6 @@ require 'pry-byebug'
 require_relative 'lib/pieces'
 require_relative 'lib/players'
 require_relative 'lib/board'
-require_relative 'lib/gameplay'
 
 board = Board.new
 board.generate_squares

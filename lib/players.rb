@@ -1,7 +1,7 @@
 #lib/players.rb
 
 class Player
-  attr_accessor :pieces, :id, :out_of_play
+  attr_accessor :pieces, :id, :enemy_pieces
 
   def initialize(id)
     @id = id

@@ -1,6 +1,6 @@
 #lib/pieces.rb
 class Pieces
-  attr_accessor :id, :in_play, :moves, :character
+  attr_accessor :id, :location, :moves, :character
   
   def initialize(character)
     @character = character
@@ -30,6 +30,13 @@ class Pieces
 end
 
 class Pawn < Pieces
+  attr_accessor :first_move
+
+  def initialize(character)
+    super
+    @first_move = true
+  end
+
 end
 
 class Knight < Pieces
