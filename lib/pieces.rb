@@ -20,6 +20,7 @@ class Pieces
 
   def move_piece(square)
     square.occupant = self
+    @location.occupant = nil if !@location.nil?
     @location = square
   end
 

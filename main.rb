@@ -7,9 +7,10 @@ require_relative 'lib/gameplay'
 
 board = Board.new
 board.generate_squares
+board.generate_pieces
 black = Player.new('Black')
 white = Player.new('White')
-black.generate_pieces
-white.generate_pieces
+black.pieces = board.black_pieces
+white.pieces = board.white_pieces
 binding.pry
 puts 'end'
