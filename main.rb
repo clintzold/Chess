@@ -7,6 +7,7 @@ require_relative 'lib/board'
 board = Board.new
 board.generate_squares
 board.generate_pieces
+board.distribute_pieces
 black = Player.new('Black')
 white = Player.new('White')
 black.pieces = board.black_pieces

@@ -1,21 +1,22 @@
 #lib/board.rb
 
 class Board
-  attr_accessor :squares, :white_pieces, :black_pieces
+  attr_accessor :squares, :white_pieces, :black_pieces, :square_coordinates
 
   def initialize
     @squares = {}
+    @square_coordinates = {}
     @white_pieces = {}
     @black_pieces = {}
   end
 
   def has_occupant?(square)
-    return false if @squares[square].occupant.nil?
+    return false if @square_coordinates[square].occupant.nil?
     return true
   end
 
   def off_board?(square)
-    @squares[square].nil?
+    @square_coordinates[square].nil?
   end
 
   def distribute_pieces
@@ -76,38 +77,38 @@ class Board
     n = 1
     8.times do
       id = "P" + n.to_s
-      @white_pieces[id] = Pawn.new("\u265f ")
-      @black_pieces[id] = Pawn.new("\u2659 ")
+      @white_pieces[id] = Pawn.new("\u265f ", 'White')
+      @black_pieces[id] = Pawn.new("\u2659 ", 'Black')
       n += 1
     end
   end
 
   def create_knights
-    @white_pieces['L1'] = Knight.new("\u265e ")
-    @black_pieces['L1'] = Knight.new("\u2658 ")
-    @white_pieces['L2'] = Knight.new("\u265e ")
-    @black_pieces['L2'] = Knight.new("\u2658 ")
+    @white_pieces['L1'] = Knight.new("\u265e ", 'White')
+    @black_pieces['L1'] = Knight.new("\u2658 ", 'Black')
+    @white_pieces['L2'] = Knight.new("\u265e ", 'White')
+    @black_pieces['L2'] = Knight.new("\u2658 ", 'Black')
   end
   
   def create_rooks
-    @white_pieces['R1'] = Rook.new("\u265c ")
-    @black_pieces['R1'] = Rook.new("\u2656 ")
-    @white_pieces['R2'] = Rook.new("\u265c ")
-    @black_pieces['R2'] = Rook.new("\u2656 ")
+    @white_pieces['R1'] = Rook.new("\u265c ", 'White')
+    @black_pieces['R1'] = Rook.new("\u2656 ", 'Black')
+    @white_pieces['R2'] = Rook.new("\u265c ", 'White')
+    @black_pieces['R2'] = Rook.new("\u2656 ", 'Black')
   end
 
   def create_bishops
-    @white_pieces['B1'] = Bishop.new("\u265d ")
-    @black_pieces['B1'] = Bishop.new("\u2657 ")
-    @white_pieces['B2'] = Bishop.new("\u265d ")
-    @black_pieces['B2'] = Bishop.new("\u2657 ")
+    @white_pieces['B1'] = Bishop.new("\u265d ", 'White')
+    @black_pieces['B1'] = Bishop.new("\u2657 ", 'Black')
+    @white_pieces['B2'] = Bishop.new("\u265d ", 'White')
+    @black_pieces['B2'] = Bishop.new("\u2657 ", 'Black')
   end
 
   def create_royals
-    @white_pieces['K'] = King.new("\u265a ")
-    @white_pieces['Q'] = Queen.new("\u265b ")
-    @black_pieces['K'] = King.new("\u2654 ")
-    @black_pieces['Q'] = Queen.new("\u2655 ")
+    @white_pieces['K'] = King.new("\u265a ", 'White')
+    @white_pieces['Q'] = Queen.new("\u265b ", 'White')
+    @black_pieces['K'] = King.new("\u2654 ", 'Black')
+    @black_pieces['Q'] = Queen.new("\u2655 ", 'Black')
   end
 
   def generate_squares
@@ -121,6 +122,7 @@ class Board
       8.times do
         id = file + rank.to_s
         @squares[id] = Square.new(id, colors[0], [x, y])
+        @square_coordinates[[x, y]] = @squares[id]
         y += 1
         rank += 1
         colors.rotate!
@@ -150,7 +152,6 @@ end
 
 class Square
   attr_accessor :id, :occupant, :color, :coordinate
-
   def initialize(id, color, coordinate)
     @id = id
     @coordinate = coordinate
