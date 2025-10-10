@@ -40,6 +40,96 @@ class Pieces
     return true if @color != piece.color
     return false
   end
+
+  def retrieve_diagonals(x, y, board)
+    options = []
+    options << retrieve_up_right_diagonals(x, y, board)
+    options << retrieve_up_left_diagonals(x, y, board)
+    options << retrieve_down_right_diagonals(x, y, board)
+    options << retrieve_down_right_diagonals(x, y, board)
+    final_options = []
+    options.each do |collection|
+      collection.each {|coordinate| final_options << coordinate}
+    end
+    return final_options
+  end
+
+  def retrieve_up_right_diagonals(x, y, board)
+    options = []
+    loop do
+      x += 1
+      y += 1
+      break if board.off_board?([x, y])
+      if board.has_occupant?([x, y])
+        if enemy?(board.square_coordinates[[x, y]].occupant)
+          options << [x, y]
+          break
+        else
+          break
+        end
+      end
+      options << [x, y]
+    end
+    return options
+  end
+
+  def retrieve_down_left_diagonals(x, y, board)
+    options = []
+    loop do
+      x -= 1
+      y -= 1
+      break if board.off_board?([x, y])
+      if board.has_occupant?([x, y])
+        if enemy?(board.square_coordinates[[x, y]].occupant)
+          options << [x, y]
+          break
+        else
+          break
+        end
+      end
+      options << [x, y]
+    end
+    return options
+  end
+
+  def retrieve_down_right_diagonals(x, y, board)
+    options = []
+    loop do
+      x += 1
+      y -= 1
+      break if board.off_board?([x, y])
+      if board.has_occupant?([x, y])
+        if enemy?(board.square_coordinates[[x, y]].occupant)
+          options << [x, y]
+          break
+        else
+          break
+        end
+      end
+      options << [x, y]
+    end
+    return options
+  end
+
+  def retrieve_up_left_diagonals(x, y, board)
+    options = []
+    loop do
+      x -= 1
+      y += 1
+      break if board.off_board?([x, y])
+      if board.has_occupant?([x, y])
+        if enemy?(board.square_coordinates[[x, y]].occupant)
+          options << [x, y]
+          break
+        else
+          break
+        end
+      end
+      options << [x, y]
+    end
+    return options
+  end
+
 end
 
 class Pawn < Pieces
@@ -93,14 +183,26 @@ class Knight < Pieces
 end
 
 class Rook < Pieces
+
+  def moves_spec(x, y, board)
+    
+  end
 end
 
 class Bishop < Pieces
+
+  def moves_spec
+  end
 end
 
 class King < Pieces
+
+  def moves_spec
+  end
 end
 
 class Queen < Pieces
 
+  def moves_spec
+  end
 end
