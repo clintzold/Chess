@@ -46,7 +46,7 @@ class Pieces
     options << retrieve_up_right_diagonals(x, y, board)
     options << retrieve_up_left_diagonals(x, y, board)
     options << retrieve_down_right_diagonals(x, y, board)
-    options << retrieve_down_right_diagonals(x, y, board)
+    options << retrieve_down_left_diagonals(x, y, board)
     final_options = []
     options.each do |collection|
       collection.each {|coordinate| final_options << coordinate}
