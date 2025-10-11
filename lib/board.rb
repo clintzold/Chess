@@ -1,11 +1,12 @@
 #lib/board.rb
 
 class Board
-  attr_accessor :squares, :white_pieces, :black_pieces, :square_coordinates
+  attr_accessor :squares, :white_pieces, :black_pieces, :square_coordinates, :players
 
   def initialize
-    @squares = {}
-    @square_coordinates = {}
+    @players = {white: Player.new('White'), black: Player.new('Black') }
+    @squares = {} #square objects live here(squares accessed with keys in true chess format ie. 'C3', 'E5', etc...)
+    @square_coordinates = {}  #hash with [x, y] coordinate keys for methods that require traversal of squares(points to @squares hash of original objects)
     @white_pieces = {}
     @black_pieces = {}
   end
@@ -13,6 +14,24 @@ class Board
   def has_occupant?(square)
     return false if @square_coordinates[square].occupant.nil?
     return true
+  end
+
+  def get_occupant(square)
+    return square.occupant
+  end
+
+  def kill_piece(piece)
+    if piece.color == 'White'
+      piece.location.occupant = nil
+      @players[:black].enemy_pieces << piece
+      @players[:white].pieces.delete(piece.id)
+      @white_pieces.delete(piece.id)
+    else
+      piece.location.occupant = nil
+      @players[:white].enemy_pieces << piece
+      @players[:black].pieces.delete(piece.id)
+      @black_pieces.delete(piece.id)
+    end
   end
 
   def off_board?(square)
@@ -77,38 +96,38 @@ class Board
     n = 1
     8.times do
       id = "P" + n.to_s
-      @white_pieces[id] = Pawn.new("\u265f ", 'White')
-      @black_pieces[id] = Pawn.new("\u2659 ", 'Black')
+      @white_pieces[id] = Pawn.new("\u265f ", 'White', id)
+      @black_pieces[id] = Pawn.new("\u2659 ", 'Black', id)
       n += 1
     end
   end
 
   def create_knights
-    @white_pieces['L1'] = Knight.new("\u265e ", 'White')
-    @black_pieces['L1'] = Knight.new("\u2658 ", 'Black')
-    @white_pieces['L2'] = Knight.new("\u265e ", 'White')
-    @black_pieces['L2'] = Knight.new("\u2658 ", 'Black')
+    @white_pieces['L1'] = Knight.new("\u265e ", 'White', 'L1')
+    @black_pieces['L1'] = Knight.new("\u2658 ", 'Black', 'L1')
+    @white_pieces['L2'] = Knight.new("\u265e ", 'White', 'L2')
+    @black_pieces['L2'] = Knight.new("\u2658 ", 'Black', 'L2')
   end
   
   def create_rooks
-    @white_pieces['R1'] = Rook.new("\u265c ", 'White')
-    @black_pieces['R1'] = Rook.new("\u2656 ", 'Black')
-    @white_pieces['R2'] = Rook.new("\u265c ", 'White')
-    @black_pieces['R2'] = Rook.new("\u2656 ", 'Black')
+    @white_pieces['R1'] = Rook.new("\u265c ", 'White', 'R1')
+    @black_pieces['R1'] = Rook.new("\u2656 ", 'Black', 'R1')
+    @white_pieces['R2'] = Rook.new("\u265c ", 'White', 'R2')
+    @black_pieces['R2'] = Rook.new("\u2656 ", 'Black', 'R2')
   end
 
   def create_bishops
-    @white_pieces['B1'] = Bishop.new("\u265d ", 'White')
-    @black_pieces['B1'] = Bishop.new("\u2657 ", 'Black')
-    @white_pieces['B2'] = Bishop.new("\u265d ", 'White')
-    @black_pieces['B2'] = Bishop.new("\u2657 ", 'Black')
+    @white_pieces['B1'] = Bishop.new("\u265d ", 'White', 'B1')
+    @black_pieces['B1'] = Bishop.new("\u2657 ", 'Black', 'B1')
+    @white_pieces['B2'] = Bishop.new("\u265d ", 'White', 'B2')
+    @black_pieces['B2'] = Bishop.new("\u2657 ", 'Black', 'B2')
   end
 
   def create_royals
-    @white_pieces['K'] = King.new("\u265a ", 'White')
-    @white_pieces['Q'] = Queen.new("\u265b ", 'White')
-    @black_pieces['K'] = King.new("\u2654 ", 'Black')
-    @black_pieces['Q'] = Queen.new("\u2655 ", 'Black')
+    @white_pieces['K'] = King.new("\u265a ", 'White', 'K')
+    @white_pieces['Q'] = Queen.new("\u265b ", 'White', 'Q')
+    @black_pieces['K'] = King.new("\u2654 ", 'Black', 'K')
+    @black_pieces['Q'] = Queen.new("\u2655 ", 'Black', 'Q')
   end
 
   def generate_squares
