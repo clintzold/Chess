@@ -3,14 +3,17 @@ require 'pry-byebug'
 require_relative 'lib/pieces'
 require_relative 'lib/players'
 require_relative 'lib/board'
-
+require_relative 'lib/gameplayer_module'
+include Gameplay
 board = Board.new
-board.generate_squares
-board.generate_pieces
-board.distribute_pieces
-black = Player.new('Black')
-white = Player.new('White')
-black.pieces = board.black_pieces
-white.pieces = board.white_pieces
+players = [board.white, board.black]
+new_game(board)
+loop do
+  initiate_move(players[0], board)
+  break if game_over?(board)
+  update_all_piece_moves(board)
+  check(board)
+  players.rotate!
+end
 binding.pry
 puts 'end'
