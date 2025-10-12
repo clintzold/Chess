@@ -54,4 +54,61 @@ module Gameplay
       return false
     end
   end
+
+  def save_game
+    data = {
+    
+        :pieces => @pieces,
+        :white => @white,
+        :black => @black,
+        :squares => @squares,
+        :square_coordinates => @square_coordinates
+    }
+    piece_data = {}
+    @pieces.each do |color, collection|
+      collection.each do |key, piece|
+        piece_data[piece]  =      { :location => piece.location,
+                                    :color => piece.color,
+                                    :moves => piece.moves,
+                                    :character => piece.character,
+                                    :id => piece.id
+                                  }
+      end
+    end
+
+    player_data = {}
+    player_data[:white] = {:name => @white.name,
+                           :pieces => @white.pieces,
+                           :enemy_pieces => @white.enemy_pieces
+    }
+    player_data[:black] = {:name => @black.name,
+                           :pieces => @black.pieces,
+                           :enemy_pieces => @black.enemy_pieces
+    }
+
+    File.open('./lib/saves/board.json', 'w') do |file|
+      file.write(JSON.pretty_generate(data))
+    end
+    File.open('./lib/saves/pieces.json', 'w') do |file|
+      file.write(JSON.pretty_generate(piece_data))
+    end
+    File.open('./lib/saves/players.json', 'w') do |file|
+      file.write(JSON.pretty_generate(player_data))
+    end
+    puts "Game Saved"
+  end
+
+
+  def load_board
+    file = File.read('./lib/saves/board.json')
+    data = JSON.parse(file)
+    board = Board.new
+    board.squares = data['squares']
+    board.white = data['white']
+    board.black = data['black']
+    board.pieces = data['pieces']
+    board.square_coordinates = data['square_coordinates']
+    return board
+  end
+
 end

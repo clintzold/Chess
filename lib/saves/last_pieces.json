@@ -1,0 +1,286 @@
+{
+  "#<Pawn:0x00007057d00b80e0>": {
+    "location": "#<Square:0x00007057d00a03c8>",
+    "color": "White",
+    "moves": [
+      "#<Square:0x00007057d00a0468>",
+      "#<Square:0x00007057d00a03c8>"
+    ],
+    "character": "♟ ",
+    "id": "P1"
+  },
+  "#<Pawn:0x00007057d00b7f50>": {
+    "location": "#<Square:0x00007057d00bfc00>",
+    "color": "White",
+    "moves": [
+      "#<Square:0x00007057d00bf840>",
+      "#<Square:0x00007057d00bf700>"
+    ],
+    "character": "♟ ",
+    "id": "P2"
+  },
+  "#<Pawn:0x00007057d00b7e10>": {
+    "location": "#<Square:0x00007057d00bc410>",
+    "color": "White",
+    "moves": [
+      "#<Square:0x00007057d00bc280>",
+      "#<Square:0x00007057d00bc1e0>"
+    ],
+    "character": "♟ ",
+    "id": "P3"
+  },
+  "#<Pawn:0x00007057d00b7c80>": {
+    "location": "#<Square:0x00007057d00bbba0>",
+    "color": "White",
+    "moves": [
+      "#<Square:0x00007057d00bb920>",
+      "#<Square:0x00007057d00bb8d0>"
+    ],
+    "character": "♟ ",
+    "id": "P4"
+  },
+  "#<Pawn:0x00007057d00b7500>": {
+    "location": "#<Square:0x00007057d00bb560>",
+    "color": "White",
+    "moves": [
+      "#<Square:0x00007057d00bb150>",
+      "#<Square:0x00007057d00bb060>"
+    ],
+    "character": "♟ ",
+    "id": "P5"
+  },
+  "#<Pawn:0x00007057d00b7460>": {
+    "location": "#<Square:0x00007057d00baac0>",
+    "color": "White",
+    "moves": [
+      "#<Square:0x00007057d00ba750>",
+      "#<Square:0x00007057d00ba5c0>"
+    ],
+    "character": "♟ ",
+    "id": "P6"
+  },
+  "#<Pawn:0x00007057d00b72d0>": {
+    "location": "#<Square:0x00007057d00b9d00>",
+    "color": "White",
+    "moves": [
+      "#<Square:0x00007057d00b99e0>",
+      "#<Square:0x00007057d00b9940>"
+    ],
+    "character": "♟ ",
+    "id": "P7"
+  },
+  "#<Pawn:0x00007057d00b70a0>": {
+    "location": "#<Square:0x00007057d00b8d10>",
+    "color": "White",
+    "moves": [
+      "#<Square:0x00007057d00b8c70>",
+      "#<Square:0x00007057d00b8b30>"
+    ],
+    "character": "♟ ",
+    "id": "P8"
+  },
+  "#<Knight:0x00007057d00b67e0>": {
+    "location": "#<Square:0x00007057d00bfca0>",
+    "color": "White",
+    "moves": [
+      "#<Square:0x00007057d00bc280>",
+      "#<Square:0x00007057d00a0468>"
+    ],
+    "character": "♞ ",
+    "id": "L1"
+  },
+  "#<Knight:0x00007057d00b6470>": {
+    "location": "#<Square:0x00007057d00b9da0>",
+    "color": "White",
+    "moves": [
+      "#<Square:0x00007057d00b8c70>",
+      "#<Square:0x00007057d00ba750>"
+    ],
+    "character": "♞ ",
+    "id": "L2"
+  },
+  "#<Rook:0x00007057d00b62e0>": {
+    "location": "#<Square:0x00007057d00a0738>",
+    "color": "White",
+    "moves": [],
+    "character": "♜ ",
+    "id": "R1"
+  },
+  "#<Rook:0x00007057d00b61a0>": {
+    "location": "#<Square:0x00007057d00b8e00>",
+    "color": "White",
+    "moves": [],
+    "character": "♜ ",
+    "id": "R2"
+  },
+  "#<Bishop:0x00007057d00b60b0>": {
+    "location": "#<Square:0x00007057d00bc5f0>",
+    "color": "White",
+    "moves": [],
+    "character": "♝ ",
+    "id": "B1"
+  },
+  "#<Bishop:0x00007057d00b5f20>": {
+    "location": "#<Square:0x00007057d00bab10>",
+    "color": "White",
+    "moves": [],
+    "character": "♝ ",
+    "id": "B2"
+  },
+  "#<King:0x00007057d00b5d40>": {
+    "location": "#<Square:0x00007057d00bb600>",
+    "color": "White",
+    "moves": [],
+    "character": "♚ ",
+    "id": "K"
+  },
+  "#<Queen:0x00007057d00b5c50>": {
+    "location": "#<Square:0x00007057d00bbc40>",
+    "color": "White",
+    "moves": [],
+    "character": "♛ ",
+    "id": "Q"
+  },
+  "#<Pawn:0x00007057d00b7fa0>": {
+    "location": "#<Square:0x00007057d00a0008>",
+    "color": "Black",
+    "moves": [
+      "#<Square:0x00007057d00a0198>",
+      "#<Square:0x00007057d00a01e8>"
+    ],
+    "character": "♙ ",
+    "id": "P1"
+  },
+  "#<Pawn:0x00007057d00b7e60>": {
+    "location": "#<Square:0x00007057d00bf340>",
+    "color": "Black",
+    "moves": [
+      "#<Square:0x00007057d00bf480>",
+      "#<Square:0x00007057d00bf5c0>"
+    ],
+    "character": "♙ ",
+    "id": "P2"
+  },
+  "#<Pawn:0x00007057d00b7d20>": {
+    "location": "#<Square:0x00007057d00bbdd0>",
+    "color": "Black",
+    "moves": [
+      "#<Square:0x00007057d00bbf10>",
+      "#<Square:0x00007057d00bc000>"
+    ],
+    "character": "♙ ",
+    "id": "P3"
+  },
+  "#<Pawn:0x00007057d00b78c0>": {
+    "location": "#<Square:0x00007057d00bb740>",
+    "color": "Black",
+    "moves": [
+      "#<Square:0x00007057d00bb790>",
+      "#<Square:0x00007057d00bb7e0>"
+    ],
+    "character": "♙ ",
+    "id": "P4"
+  },
+  "#<Pawn:0x00007057d00b74b0>": {
+    "location": "#<Square:0x00007057d00baed0>",
+    "color": "Black",
+    "moves": [
+      "#<Square:0x00007057d00bafc0>",
+      "#<Square:0x00007057d00bb010>"
+    ],
+    "character": "♙ ",
+    "id": "P5"
+  },
+  "#<Pawn:0x00007057d00b7370>": {
+    "location": "#<Square:0x00007057d00b9e90>",
+    "color": "Black",
+    "moves": [
+      "#<Square:0x00007057d00b9ee0>",
+      "#<Square:0x00007057d00ba4d0>"
+    ],
+    "character": "♙ ",
+    "id": "P6"
+  },
+  "#<Pawn:0x00007057d00b70f0>": {
+    "location": "#<Square:0x00007057d00b9210>",
+    "color": "Black",
+    "moves": [
+      "#<Square:0x00007057d00b9260>",
+      "#<Square:0x00007057d00b9300>"
+    ],
+    "character": "♙ ",
+    "id": "P7"
+  },
+  "#<Pawn:0x00007057d00b6a10>": {
+    "location": "#<Square:0x00007057d00b8310>",
+    "color": "Black",
+    "moves": [
+      "#<Square:0x00007057d00b8540>",
+      "#<Square:0x00007057d00b8a40>"
+    ],
+    "character": "♙ ",
+    "id": "P8"
+  },
+  "#<Knight:0x00007057d00b66a0>": {
+    "location": "#<Square:0x00007057d00bc8c0>",
+    "color": "Black",
+    "moves": [
+      "#<Square:0x00007057d00bbf10>",
+      "#<Square:0x00007057d00a0198>"
+    ],
+    "character": "♘ ",
+    "id": "L1"
+  },
+  "#<Knight:0x00007057d00b6330>": {
+    "location": "#<Square:0x00007057d00b8ea0>",
+    "color": "Black",
+    "moves": [
+      "#<Square:0x00007057d00b8540>",
+      "#<Square:0x00007057d00b9ee0>"
+    ],
+    "character": "♘ ",
+    "id": "L2"
+  },
+  "#<Rook:0x00007057d00b61f0>": {
+    "location": "#<Square:0x00007057d00bff70>",
+    "color": "Black",
+    "moves": [],
+    "character": "♖ ",
+    "id": "R1"
+  },
+  "#<Rook:0x00007057d00b6150>": {
+    "location": "#<Square:0x00007057d00b8180>",
+    "color": "Black",
+    "moves": [],
+    "character": "♖ ",
+    "id": "R2"
+  },
+  "#<Bishop:0x00007057d00b5f70>": {
+    "location": "#<Square:0x00007057d00bbd80>",
+    "color": "Black",
+    "moves": [],
+    "character": "♗ ",
+    "id": "B1"
+  },
+  "#<Bishop:0x00007057d00b5d90>": {
+    "location": "#<Square:0x00007057d00b9e40>",
+    "color": "Black",
+    "moves": [],
+    "character": "♗ ",
+    "id": "B2"
+  },
+  "#<King:0x00007057d00b5ac0>": {
+    "location": "#<Square:0x00007057d00bae80>",
+    "color": "Black",
+    "moves": [],
+    "character": "♔ ",
+    "id": "K"
+  },
+  "#<Queen:0x00007057d00b5a20>": {
+    "location": "#<Square:0x00007057d00bb650>",
+    "color": "Black",
+    "moves": [],
+    "character": "♕ ",
+    "id": "Q"
+  }
+}

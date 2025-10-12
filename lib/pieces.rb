@@ -21,6 +21,7 @@ class Pawn < Pieces
   def initialize(character, color, id)
     super
     @first_move = true
+    @crossed_board = false
   end
 
   def moves_spec(x, y, board)
@@ -36,8 +37,9 @@ class Pawn < Pieces
       end
     end
     final_options << [x, y + 1] if !board.has_occupant?([x, y + 1])
+    final_options << [x, y - 1] if !board.has_occupant?([x, y - 1]) && @crossed_board
     if @first_move
-      final_options << [x, y + 2]
+      final_options << [x, y + 2] && !board.has_occupant?([x, y - 1])
     end
     return final_options
   end
@@ -52,7 +54,8 @@ class Pawn < Pieces
       end
     end
     final_options << [x, y - 1] if !board.has_occupant?([x, y - 1])
-    if @first_move
+    final_options << [x, y + 1] if !board.has_occupant?([x, y + 1]) && @crossed_board
+    if @first_move && !board.has_occupant?([x, y - 2])
       final_options << [x, y - 2]
     end
     return final_options
