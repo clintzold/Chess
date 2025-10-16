@@ -4,7 +4,7 @@ require 'json'
 require_relative 'lib/pieces'
 require_relative 'lib/players'
 require_relative 'lib/board'
-require_relative 'lib/gameplayer_module'
+require_relative 'lib/gameplay_module'
 require_relative 'lib/save_load_module.rb'
 
 include Gameplay

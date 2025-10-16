@@ -1,5 +1,5 @@
 #lib/pieces.rb
-require_relative 'movement'
+require_relative 'movement_module'
 
 class Pieces
   include Movement
