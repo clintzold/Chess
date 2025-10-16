@@ -6,7 +6,7 @@ class Board
   include SaveLoad
   include Populate
 
-  attr_accessor :squares, :white_pieces, :black_pieces, :square_coordinates, :white, :black, :players, :pieces
+  attr_accessor :squares, :square_coordinates, :white, :black, :pieces
 
   def initialize
     @pieces = {white: {}, black: {}}
