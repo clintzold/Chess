@@ -55,60 +55,52 @@ module Gameplay
     end
   end
 
+  def get_white
+    white_pieces = {}
+    @pieces[:white].each do |id, data|
+      white_pieces[id] = data.location.id
+    end
+  end
+
+  def get_black
+    black_pieces = {}
+    @pieces[:black].each do |id, data|
+      black_pieces[id] = data.location.id
+    end
+  end
+
+  def get_captured_black
+    captured_black = []
+    @white.enemy_pieces.each do |piece|
+      captured_black << piece.id
+    end
+  end
+
+  def get_captured_white
+    captured_white = []
+    @black.enemy_pieces.each do |piece|
+      captured_white << piece.id
+    end
+  end
+
   def save_game
     data = {
-    
-        :pieces => @pieces,
-        :white => @white,
-        :black => @black,
-        :squares => @squares,
-        :square_coordinates => @square_coordinates
+      :white_pieces => get_white,
+      :black_pieces => get_black,
+      :captured_black => get_captured_black,
+      :captured_white => get_captured_white
     }
-    piece_data = {}
-    @pieces.each do |color, collection|
-      collection.each do |key, piece|
-        piece_data[piece]  =      { :location => piece.location,
-                                    :color => piece.color,
-                                    :moves => piece.moves,
-                                    :character => piece.character,
-                                    :id => piece.id
-                                  }
-      end
-    end
-
-    player_data = {}
-    player_data[:white] = {:name => @white.name,
-                           :pieces => @white.pieces,
-                           :enemy_pieces => @white.enemy_pieces
-    }
-    player_data[:black] = {:name => @black.name,
-                           :pieces => @black.pieces,
-                           :enemy_pieces => @black.enemy_pieces
-    }
-
-    File.open('./lib/saves/board.json', 'w') do |file|
-      file.write(JSON.pretty_generate(data))
-    end
-    File.open('./lib/saves/pieces.json', 'w') do |file|
-      file.write(JSON.pretty_generate(piece_data))
-    end
-    File.open('./lib/saves/players.json', 'w') do |file|
-      file.write(JSON.pretty_generate(player_data))
+    File.open('./lib/saves/save_data.json', 'w') do |file|
+      file.puts JSON.pretty_generate(data)
     end
     puts "Game Saved"
   end
 
 
   def load_board
-    file = File.read('./lib/saves/board.json')
+    file = File.read('./lib/saves/save_data.json')
     data = JSON.parse(file)
-    board = Board.new
-    board.squares = data['squares']
-    board.white = data['white']
-    board.black = data['black']
-    board.pieces = data['pieces']
-    board.square_coordinates = data['square_coordinates']
-    return board
+    return data
   end
 
 end

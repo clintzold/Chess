@@ -11,9 +11,10 @@ module Movement
     end
   end
 
+
   def move_piece(square)
-    square.occupant = self
     @location.occupant = nil if !@location.nil?
+    square.occupant = self
     @location = square
   end
 
