@@ -1,7 +1,9 @@
 #lib/board.rb
 require_relative 'populate_module'
+require_relative 'save_load_module'
 
 class Board
+  include SaveLoad
   include Populate
 
   attr_accessor :squares, :white_pieces, :black_pieces, :square_coordinates, :white, :black, :players, :pieces

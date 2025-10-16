@@ -5,12 +5,12 @@ module Gameplay
     board.generate_squares
     board.generate_pieces
     board.distribute_pieces
-    board.print_board
     update_all_piece_moves(board)
   end
 
   def initiate_move(player, board)
     piece = player.select_piece(board)
+    return piece if piece == 'S'  #Send message in final relay to save game
     loop do
       square = player.select_square(board)
       next if !piece.valid_move?(square)
@@ -55,56 +55,42 @@ module Gameplay
     end
   end
 
-  def get_white
-    white_pieces = {}
-    @white.pieces.each do |id, data|
-      white_pieces[id] = data.location.id
+  def select_game
+    loop do
+      puts "Welcome to CHESS!\n\nPlease select an option...\n<N>ew Game\n<L>oad Game"
+      choice = gets.chomp.upcase
+      if choice != 'N' && choice != 'L'
+        puts "Make a valid choice!"
+        next
+      elsif choice == 'N'
+        new_game(self)
+        self.print_board
+        break
+      else
+        new_game(self)
+        self.restore_session
+        self.print_board
+        break
+      end
     end
-    return white_pieces
-  end
-
-  def get_black
-    black_pieces = {}
-    @black.pieces.each do |id, data|
-      black_pieces[id] = data.location.id
-    end
-    return black_pieces
-  end
-
-  def get_captured_black
-    captured_black = []
-    @white.enemy_pieces.each do |piece|
-      captured_black << piece.id
-    end
-    return captured_black
-  end
-
-  def get_captured_white
-    captured_white = []
-    @black.enemy_pieces.each do |piece|
-      captured_white << piece.id
-    end
-    return captured_white
-  end
-
-  def save_game
-    data = {
-      :white_pieces => get_white,
-      :black_pieces => get_black,
-      :captured_black => get_captured_black,
-      :captured_white => get_captured_white
-    }
-    File.open('./lib/saves/save_data.json', 'w') do |file|
-      file.puts JSON.pretty_generate(data)
-    end
-    puts "Game Saved"
   end
 
 
-  def load_board
-    file = File.read('./lib/saves/save_data.json')
-    data = JSON.parse(file)
-    return data
+  def play(players, board)
+    loop do
+      players.rotate! if !players[0].turn #Check necessary for maintaining play order when restored session is initiated
+      if initiate_move(players[0], board) == 'S'
+      
+        board.save_game
+        puts 'saved'
+        break
+      end
+      break if game_over?(board)
+      update_all_piece_moves(board)
+      check(board)
+      players[0].turn = false
+      players[1].turn = true
+    end
   end
 
 end
