@@ -10,21 +10,20 @@ were just so many moving parts!
 Without OOP, it seems that the process of modifying and adding functionality 
 to the program would have been absolutely excruciating. 
 
-After building tic-tac-toe, connect-four and working through some of the logic
-of knights-travails, the logic of moving the chess pieces and checking for 
+After building 'tic-tac-toe', 'connect-four' and working through some of the logic
+of 'knights-travails', the logic of moving the chess pieces and checking for 
 a CHECK scenario or a win was relatively simple if time-consuming.
 
 Distributing pieces to players and squares to the board was also very basic,
 the only challenge being when I decided to change the way I had classes
-and their objects stored(I let the Player class objects live as instance vari-
-ables within the Board class to make calling certain functions a little bit 
-simpler).
+and their objects stored(I let the Player class objects live as instance variables 
+within the Board class to make calling certain functions a little bit simpler).
 
 Another change I made was adding another instance variable to the Board class
 that would store pointers to Square objects in a hash of 'x, y' coordinates.
 This allowed me to check the board and update available moves much more easily
 as I could simply scan each piece's potential move radius by adding predetermined
-values to its current coordinates(impossible with Letter and Integer identifiers).
+values to its current coordinates(impossible with String and Integer identifiers).
 I kept an alternate hash for squares, where they were identified by their classic
 chess positions(C4, A5, D8, etc...) for a more intuitive user experience but calculated
 movement 'under the hood' using the 'x, y' hash of squares.
