@@ -1,5 +1,4 @@
 #main.rb
-require 'pry-byebug'
 require 'json'
 require_relative 'lib/pieces'
 require_relative 'lib/players'
