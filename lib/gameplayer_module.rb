@@ -57,16 +57,18 @@ module Gameplay
 
   def get_white
     white_pieces = {}
-    @pieces[:white].each do |id, data|
+    @white.pieces.each do |id, data|
       white_pieces[id] = data.location.id
     end
+    return white_pieces
   end
 
   def get_black
     black_pieces = {}
-    @pieces[:black].each do |id, data|
+    @black.pieces.each do |id, data|
       black_pieces[id] = data.location.id
     end
+    return black_pieces
   end
 
   def get_captured_black
@@ -74,6 +76,7 @@ module Gameplay
     @white.enemy_pieces.each do |piece|
       captured_black << piece.id
     end
+    return captured_black
   end
 
   def get_captured_white
@@ -81,6 +84,7 @@ module Gameplay
     @black.enemy_pieces.each do |piece|
       captured_white << piece.id
     end
+    return captured_white
   end
 
   def save_game

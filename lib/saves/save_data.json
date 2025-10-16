@@ -1,6 +1,6 @@
 {
   "white_pieces": {
-    "P1": "B5",
+    "P1": "A2",
     "P2": "B2",
     "P3": "C2",
     "P4": "D2",
@@ -19,6 +19,7 @@
   },
   "black_pieces": {
     "P1": "A7",
+    "P2": "B7",
     "P3": "C7",
     "P4": "D7",
     "P5": "E7",
@@ -34,8 +35,6 @@
     "K": "E8",
     "Q": "D8"
   },
-  "captured_black": [
-    "P2"
-  ],
+  "captured_black": [],
   "captured_white": []
 }
